@@ -30,7 +30,7 @@ def extract_token_from_response(data, region):
 def get_jwt_token_sync(region):
     global jwt_token
     endpoints = {
-        "IND": "https://jwtgenerater.vercel.app/token?uid=3828066210&password=C41B0098956AE7B79F752FCA873C747060C71D3C17FBE4794F5EB9BD71D4DA95",
+        "IND": "https://genjwt.vercel.app/api/get_jwt?type=4&guest_uid=3942040791&guest_password=EDD92B8948F4453F544C9432DFB4996D02B4054379A0EE083D8459737C50800B",
         "BR": "https://tokenalljwt.onrender.com/api/oauth_guest?uid=3787481313&password=JlOivPeosauV0l9SG6gwK39lH3x2kJkO",
         "US": "https://tokenalljwt.onrender.com/api/oauth_guest?uid=&password=",
         "SAC": "https://tokenalljwt.onrender.com/api/oauth_guest?uid=&password=",
