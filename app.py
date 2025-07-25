@@ -17,8 +17,11 @@ def convert_timestamp(release_time):
 
 def extract_token_from_response(data, region):
     if region == "IND":
-        if data.get('status') in ['success', 'live']:
-            return data.get('token')
+        if isinstance(data, dict):
+            if data.get('BearerAuth'):
+                return data['BearerAuth']
+            elif data.get('status') in ['success', 'live']:
+                return data.get('token')
     elif region in ["BR", "US", "SAC", "NA"]:
         if isinstance(data, dict) and 'token' in data:
             return data['token']
@@ -52,7 +55,7 @@ def get_jwt_token_sync(region):
                     print(f"JWT Token for {region} updated successfully: {token[:50]}...")
                     return jwt_token
                 else:
-                    print(f"Failed to extract token from response for {region}")
+                    print(f"Failed to extract token from response for {region}. Response: {data}")
             else:
                 print(f"Failed to get JWT token for {region}: HTTP {response.status_code}")
         except Exception as e:
